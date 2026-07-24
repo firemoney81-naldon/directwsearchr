@@ -1,23 +1,784 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "2026 자동차보험 카드 혜택 최적화 비교 가이드",
+      "url": "https://yourdomain.com",
+      "category": "Car Insurance and Credit Card Benefits",
+      "description": "2026년 최신 자동차보험 카드 혜택 비교 및 연령별, 보험사별 맞춤 신용카드 청구할인, 캐시백 이벤트 분석을 제공하는 금융 전문 정보 포털입니다. 다이렉트 가입 시 가장 저렴한곳과 최저가 혜택을 비교 분석해 드립니다.",
+      "provider": {
+        "@type": "Organization",
+        "name": "스마트 금융 카드 혜택 연구소",
+        "url": "https://yourdomain.com"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "대한민국"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://yourdomain.com/search?q={search_term_string}",
+        "queryInput": "required name=search_term_string"
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --primary-color: #0f172a; /* 신뢰감을 주는 깊은 슬레이트 블루 */
+      --secondary-color: #0f766e; /* 현대적인 감성의 딥 민트 */
+      --accent-color: #ea580c; /* 가시성을 높이는 차분한 오렌지 */
+      --bg-light: #f8fafc; /* 부드러운 배경색 */
+      --bg-white: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #334155;
+      --text-muted: #64748b;
+      --transition-speed: 0.3s;
+    }
+
+    body {
+      font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      word-break: keep-all;
+      font-weight: 300;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), #1e293b);
+      color: var(--bg-white);
+      padding: 4rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.15);
+    }
+
+    header h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      margin: 0 0 1rem;
+      letter-spacing: -1px;
+      line-height: 1.3;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: #cbd5e1;
+      max-width: 800px;
+      margin: 0 auto 2.5rem;
+    }
+
+    nav {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 0;
+    }
+
+    nav a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    nav a:hover {
+      color: var(--bg-white);
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: -2rem auto 4rem;
+      padding: 2.5rem;
+      background-color: var(--bg-white);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      border-radius: 16px;
+      position: relative;
+    }
+
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      font-weight: 700;
+      font-size: 1.9rem;
+      margin-top: 0;
+      padding-bottom: 0.8rem;
+      border-bottom: 3px solid #ccfbf1;
+      line-height: 1.4;
+    }
+
+    h3 {
+      color: var(--secondary-color);
+      font-size: 1.5rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    p {
+      text-align: justify;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--text-main);
+    }
+
+    /* Interactive Calculator Container */
+    .interactive-box {
+      background-color: #f0fdfa;
+      border: 1px solid #99f6e4;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .interactive-box h3 {
+      border-bottom: none;
+      margin-top: 0;
+      color: var(--secondary-color);
+      font-size: 1.4rem;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .calc-field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .calc-field label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .calc-field select, .calc-field input {
+      padding: 0.8rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      background-color: var(--bg-white);
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+
+    .calc-btn {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color var(--transition-speed);
+      width: 100%;
+    }
+
+    .calc-btn:hover {
+      background-color: #0d9488;
+    }
+
+    .calc-result {
+      margin-top: 1.5rem;
+      padding: 1.2rem;
+      background-color: var(--bg-white);
+      border-radius: 8px;
+      border: 1px solid #ccfbf1;
+      display: none;
+    }
+
+    /* Demographic Tab Filters */
+    .tab-container {
+      margin: 2rem 0;
+    }
+
+    .tab-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tab-btn {
+      padding: 0.6rem 1.2rem;
+      background-color: #e2e8f0;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all var(--transition-speed);
+    }
+
+    .tab-btn.active {
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+    }
+
+    .tab-content {
+      display: none;
+      background-color: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Table Styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 1.2rem 1rem;
+      border: 1px solid var(--border-color);
+      text-align: left;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      color: var(--primary-color);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    /* Highlight class for core concepts */
+    .highlight-word {
+      font-weight: 700;
+      color: var(--accent-color);
+    }
+
+    /* FAQ Accordion */
+    dl dt {
+      font-weight: 700;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      color: var(--primary-color);
+      background-color: #f8fafc;
+      padding: 1.2rem;
+      border-left: 5px solid var(--secondary-color);
+      transition: background-color var(--transition-speed);
+      font-size: 1.1rem;
+      border-radius: 0 8px 8px 0;
+    }
+
+    dl dt:hover {
+      background-color: #f1f5f9;
+    }
+
+    dl dd {
+      margin: 0;
+      padding: 1.2rem;
+      background-color: var(--bg-white);
+      border-left: 5px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      display: none;
+      font-size: 1rem;
+      color: var(--text-main);
+      border-radius: 0 0 8px 8px;
+    }
+
+    dl dt.active + dd {
+      display: block;
+    }
+
+    /* Keyword tags styling */
+    .keyword-tags {
+      margin: 2.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .keyword-tags span {
+      background-color: #f1f5f9;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      border: 1px solid var(--border-color);
+    }
+
+    /* Lead Form Styling */
+    .form-container {
+      background-color: #f8fafc;
+      padding: 2.5rem;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-top: 3rem;
+    }
+
+    .form-container h3 {
+      margin-top: 0;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-field label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .form-field input[type="text"],
+    .form-field input[type="tel"],
+    .form-field select {
+      padding: 0.9rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 1rem;
+      background-color: var(--bg-white);
+    }
+
+    .form-checkbox {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .form-checkbox input {
+      margin-top: 0.3rem;
+    }
+
+    .form-checkbox label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .submit-btn {
+      grid-column: 1 / -1;
+      background-color: var(--accent-color);
+      color: var(--bg-white);
+      border: none;
+      padding: 1.1rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color var(--transition-speed);
+      margin-top: 1rem;
+    }
+
+    .submit-btn:hover {
+      background-color: #ea580c;
+    }
+
+    /* Links container */
+    .link-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .link-list li {
+      margin-bottom: 0.8rem;
+    }
+
+    .link-list a {
+      color: var(--secondary-color);
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    .link-list a:hover {
+      color: var(--primary-color);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      background-color: #f1f5f9;
+      border-top: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      main {
+        padding: 1.5rem;
+        margin-top: -1rem;
+      }
+      nav ul {
+        gap: 1rem;
+      }
+      nav a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>2026 자동차보험 카드 혜택 비교 가이드</h1>
+    <p>금융 분석 AI가 엄선한 신용카드 제휴 할인 및 연령별 보험료 세이브 전략</p>
     <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+      <ul>
+        <li><a href="#intro">혜택 개요</a></li>
+        <li><a href="#calculator">모의 계산기</a></li>
+        <li><a href="#demographics">연령별 꿀팁</a></li>
+        <li><a href="#comparison">혜택 비교표</a></li>
+        <li><a href="#community">커뮤니티 트렌드</a></li>
+        <li><a href="#faq">자주 묻는 질문</a></li>
+        <li><a href="#consulting">맞춤 컨설팅</a></li>
+      </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+  </header>
+
+  <main>
+    <section id="intro">
+      <h2>매년 나가는 고정 지출, 자동차보험료 어떻게 줄일까</h2>
+      <p>매년 자동차 소유주라면 의무적으로 가입해야 하는 자동차보험은 가계 지출에서 매우 큰 비중을 차지하는 항목입니다. 특히 최근 물가 상승과 차량 가격 상승세가 겹치며 운전자들이 체감하는 1년 주기 보험료의 부담은 더욱 무거워졌습니다. 하지만 지혜로운 소비를 지향하는 차주들은 이 고정 지출을 단순한 납부로 끝내지 않고 <span class="highlight-word">자동차보험카드혜택</span>을 극대화하여 실제 지불하는 실질 비용을 획기적으로 경감하고 있습니다.</p>
+      
+      <p>현재 국내의 다양한 카드 브랜드 및 카드 종류에 따라 제공하는 혜택의 범위는 천차만별입니다. 가입 시점에 일시적으로 제공되는 청구할인 형태부터, 매월 정기적으로 주유소나 정비소에서 할인 및 적립 혜택을 주는 요금제 할인형 신용카드까지 여러 가지 선택지가 존재합니다. 이러한 장단점을 면밀히 파악하지 않은 상태에서 무작정 가입을 진행하는 경우, 전월 이용실적 조건이나 연회비 등의 단점 조건에 묶여 실제 체감할 수 있는 절약 혜택은 미미할 수도 있습니다. 따라서 나이, 직업, 주행 패턴 및 연간 예상 지출 규모 등을 면밀하게 분석하여 나에게 가장 유용한 최적가 설계 방안을 파악하는 것이 중요합니다.</p>
+
+      <div class="interactive-box" id="calculator">
+        <h3>나의 맞춤 자동차보험 카드 혜택 모의 계산기</h3>
+        <p>몇 가지 간단한 정보 입력만으로 연간 예상 할인율 및 가입 시 적용 가능한 최저가 추천 카드 브랜드를 실시간으로 매칭해 봅니다.</p>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label for="calc-age">운전자 연령대 선택</label>
+            <select id="calc-age">
+              <option value="20">20대 초반 ~ 후반</option>
+              <option value="30">30대 초반 ~ 중반</option>
+              <option value="40">40대 가장 및 패밀리 차주</option>
+              <option value="50">50대 은퇴 준비 및 부부 한정</option>
+              <option value="60">60대 이상 실버 운전자</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label for="calc-premium">연간 예상 보험료 (단위: 만 원)</label>
+            <input type="text" id="calc-premium" placeholder="예: 80" value="80">
+          </div>
+          <div class="calc-field">
+            <label for="calc-pattern">가장 선호하는 혜택 종류</label>
+            <select id="calc-pattern">
+              <option value="billing">결제 시 즉시/청구 할인형</option>
+              <option value="points">온라인 간편결제 포인트 적립형</option>
+              <option value="gas">매월 일상 속 주유 및 정비 혜택형</option>
+            </select>
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calculateBenefits()">맞춤 혜택 계산하기</button>
+        <div class="calc-result" id="calcResult">
+          <!-- 계산 결과가 여기에 표시됩니다. -->
+        </div>
+      </div>
+    </section>
+
+    <section id="demographics">
+      <h2>연령대별 맞춤형 자동차보험 카드 혜택 추천</h2>
+      <p>연령과 운전 경력, 소득 수준 등에 따라 자동차보험 평균 금액과 주 사용 신용카드의 특성은 명확한 차이점을 보입니다. 아래의 필터를 선택하여 연령대별 최적화된 맞춤 전략을 확인해 보실 수 있습니다.</p>
+
+      <div class="tab-container">
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchTab(event, 'tab-20')">20대 대학생 및 사회초년생</button>
+          <button class="tab-btn" onclick="switchTab(event, 'tab-30')">30대 직장인 및 패밀리카 운전자</button>
+          <button class="tab-btn" onclick="switchTab(event, 'tab-40-50')">40대·50대 장거리 및 부부한정 운전자</button>
+          <button class="tab-btn" onclick="switchTab(event, 'tab-60')">60대 이상 실버드라이버 및 시니어</button>
+        </div>
+
+        <div id="tab-20" class="tab-content active">
+          <h4>20대 초반 및 20대 후반, 사회초년생을 위한 실속 가이드</h4>
+          <p>운전 경력이 비교적 짧은 20대 초반 대학생 운전자나 초보 운전자의 경우 자동차보험 예상 금액 자체가 타 연령대 대비 가장 높은 수준으로 책정되는 편입니다. 무사고 운전자 할인 혜택도 부족하고 군필자 우대 대상자 지정 등 보완책이 있더라도 기본 요금이 비쌉니다. 이 시기에는 첫 보험 가입 시 제공하는 신규 가입 이벤트나 다이렉트 싼곳 제휴 플랫폼 경유 혜택을 반드시 적용받아야 합니다.</p>
+          <p>예를 들어 토스 어플, 카카오톡 페이먼트 서비스, 네이버 페이 등의 온라인 핀테크 앱을 통해 다이렉트 가입 전용 이벤트 페이지를 경유하여 신규 가입 시 제공되는 모바일 주유 상품권, 캐시백 현금지원 및 포인트를 수령하는 편이 훨씬 경제적입니다. 20대 남성 및 20대 여성 가입자들은 네이버 등의 웹 포털이나 구글, 유튜브 플랫폼의 가이드 영상을 검색하여 제휴 카드사의 첫 결제 이벤트를 적극적으로 공략하는 것을 추천합니다.</p>
+        </div>
+
+        <div id="tab-30" class="tab-content">
+          <h4>30대 초반 및 30대 중반 직장인, 1인 신조 및 다자녀 가구 맞춤</h4>
+          <p>30대 차주들은 출퇴근을 위한 장거리 출퇴근러나 어린 자녀를 둔 패밀리카 운전학부모 비중이 높습니다. 이 구간부터는 단순 가입 일회성 혜택도 중요하지만 전월 실적에 따라 일상 속에서 할인 혜택을 계속 유지해 주는 주유 할인 전용 카드 브랜드를 활용하는 것이 주된 팁입니다.</p>
+          <p>주말 부부 운전자나 주 5일 통근 직장인의 경우 매월 나가는 기름값 부담 역시 상당하므로 리터당 대폭의 주유 혜택을 지닌 현대카드, 신한카드, 삼성카드 계열의 제휴 카드를 서브 카드로 세팅해 두는 편이 유리합니다. 또한 자녀가 있는 경우 다자녀가구 특약 등과 더불어 카드를 통한 온라인 결제 청구할인이 가능한 다이렉트 전문 렌트사 및 인공지능 기반의 AI 비교 사이트 좌표를 활용하여 연간 평균 견적 비용을 최소화해야 합니다.</p>
+        </div>
+
+        <div id="tab-40-50" class="tab-content">
+          <h4>40대 가장 및 50대 부부 한정 가입자 효율 극대화 전략</h4>
+          <p>40대 남성 가장 및 50대 부부 가입자들은 비교적 무사고 경력이 오래되었고 연간 주행거리가 일정하게 수렴하는 안정적인 특성을 가집니다. 부부한정이나 가족한정 특약을 엮는 경우가 다수이며 하이브리드 차주 또는 수입차 오너 비율도 점진적으로 상승하는 연령대입니다.</p>
+          <p>이 연령대에서는 주 카드로 사용하는 프리미엄 신용카드의 포인트 차감 할인 제도를 잘 따져봐야 합니다. 카드사마다 장기 우수 고객에게 주어지는 전용 사은품이나 현금지원급 할인 한도가 존재하며 연회비 대비 실익이 뛰어난 연간 요금 할인 상품권 제공 프로모션을 집중 이용할 수 있습니다. 50대 은퇴 준비 예정자 및 개인사업자 대표님들의 경우 법인 차량 운전자 전용 비용처리 컨설팅을 병행하여 세제 혜택과 카드 제휴 할인을 믹스하는 방식으로 연간 총비용을 슬림하게 관리하는 요령이 필요합니다.</p>
+        </div>
+
+        <div id="tab-60" class="tab-content">
+          <h4>60대 이상 실버 드라이버 및 시니어 고령 운전자를 위한 팁</h4>
+          <p>60대 실버운전자나 고령 운전자, 시니어 드라이버들은 직접 스마트폰 앱을 활용하여 복잡한 인터넷 다이렉트 가입 신청을 처리하거나 다양한 핀테크 앱 내돈내산 후기를 분석하는 것에 일부 어려움을 느낄 수 있습니다. 이로 인해 불필요하게 전화 가입 및 설계사 상담 대면 채널을 이용하며 더 비싼 요금을 지출하는 단점을 겪기도 합니다.</p>
+          <p>이때는 전담 상담사가 지원을 돕는 유선 다이렉트 채널 혹은 카카오톡 챗봇 및 인공지능 AI 상담 에이전트 서비스 등을 통해 화면 구성을 쉽게 이해하고 자녀들의 도움을 받아 간편 카드 제휴 혜택을 매칭하는 것이 좋습니다. 대중교통 이용자 특약이나 무사고 숙련자 특혜 외에도 신용카드 한 장으로 전산에서 자동으로 세금을 납부할 때 장기 무이자 할부와 자동차보험료 선납 차감 할인을 대행해 주는 전문 카드사의 라이프 케어 서비스를 활용하는 편이 가장 안전하고 편리한 방법입니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="comparison">
+      <h2>2026년 주요 카드사별 자동차보험 제휴 및 캐시백 혜택 상세 비교</h2>
+      <p>다음 표는 주요 신용카드 브랜드의 2026년 기준 자동차보험 결제 시 평균적인 청구할인 금액 및 연회비 등의 중요 지표를 비교한 자료입니다. 각 브랜드별 조건 및 한도를 확인하신 후 가입 프로세스에 참고하시기 바랍니다.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>카드사 브랜드</th>
+            <th>주요 혜택 종류</th>
+            <th>최대 할인 예상 금액</th>
+            <th>전월 실적 요구 조건</th>
+            <th>연회비 수준</th>
+            <th>추천 사용자 그룹</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>국민카드 계열</td>
+            <td>주요 다이렉트 보험사 결제일 청구할인</td>
+            <td>연 30,000 원</td>
+            <td>30만 원 이상</td>
+            <td>15,000 원 내외</td>
+            <td>대학생, 20대 사회초년생 초보 운전자</td>
+          </tr>
+          <tr>
+            <td>삼성카드 계열</td>
+            <td>다이렉트 간편결제 포인트 세이브 적립형</td>
+            <td>연 30,000 원</td>
+            <td>없음 (보험사 제휴 조건)</td>
+            <td>20,000 원 선</td>
+            <td>1인 가구 청년 및 단거리 주행 차주</td>
+          </tr>
+          <tr>
+            <td>신한카드 계열</td>
+            <td>주유 리터당 캐시백 및 연 1회 청구할인</td>
+            <td>연 40,000 원</td>
+            <td>50만 원 이상</td>
+            <td>18,000 원 선</td>
+            <td>장거리 출퇴근러 및 하이브리드 오너</td>
+          </tr>
+          <tr>
+            <td>현대카드 계열</td>
+            <td>정비소 연동 쿠폰팩 및 다이렉트 할인권 제공</td>
+            <td>연 35,000 원</td>
+            <td>50만 원 이상</td>
+            <td>25,000 원 선</td>
+            <td>수입차 오너 및 고성능 패밀리카 차주</td>
+          </tr>
+          <tr>
+            <td>우리카드 계열</td>
+            <td>신규 연회비 지원금 캐시백 및 전용 사은품</td>
+            <td>연 20,000 원</td>
+            <td>30만 원 이상</td>
+            <td>12,000 원 선</td>
+            <td>경차 차주 및 시니어 고령 운전자</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>위의 비교표 수치는 제휴 기간 및 카드사 브랜드별 수시 이벤트를 반영한 예상치이며, 구체적인 계약 조건과 혜택 한도는 반드시 카드사 고객센터 및 공식 인터넷 사이트에서 확인하셔야 불이익을 방지할 수 있습니다.</p>
+    </section>
+
+    <section id="community">
+      <h2>커뮤니티 트렌드 분석: 디시, 보배드림, 펨코 유저들이 추천하는 좌표</h2>
+      <p>온라인의 집단 지성이 모이는 유명 자동차 및 소비 포럼에서는 실제 내돈내산으로 직접 혜택을 누리고 작성한 생생한 이용 후기가 활발히 공유되고 있습니다. 대표적으로 디시인사이드 신용카드 갤러리나 자동차 갤러리, 보배드림 자유게시판, 에펨코리아 및 펨코의 차/바이크 게시판 등이 그 중심에 있습니다.</p>
+      
+      <p>이곳 유저들이 공유하는 핵심 요지는 소위 혜택 성지로 불리는 가입 좌표들을 실시간으로 공유하는 것입니다. 신규 회원을 적극 유치하기 위해 카드 업체들이 연말이나 신년 특정 시즌에 맞춰 배포하는 이른바 연회비 지원금 100% 이벤트나 간편결제 등록 시 지급되는 주유 쿠폰, 백화점 상품권 등 추가 사은품 조합이 매력적이라는 평입니다.</p>
+
+      <p>이들은 단순히 대형 카드사 홈페이지에 직접 접속해서 가입을 신청하기보다는, 금융 전문 비교 분석 플랫폼이나 핀테크 토스, 네이버 페이의 이벤트 탭을 이리저리 비교한 뒤 진입하는 하는법을 공유하고 있습니다. 인터넷에 퍼진 단기성 허위 정보나 스팸성 텔레그램 채널의 미확인 주소보다는 검증된 구글 인플루언서 리뷰 채널 및 유튜브 가이드 영상을 교차 검증하는 것을 주된 성공 팁으로 지목합니다.</p>
+    </section>
+
+    <section id="faq">
+      <h2>자주 묻는 질문 (FAQ)</h2>
+      <dl>
+        <dt tabindex="0" aria-expanded="false">Q. 신규 가입 카드 캐시백 이벤트와 보험사 제휴 청구할인은 중복 적용이 되나요?</dt>
+        <dd>A. 일부 중복 적용이 가능한 경우도 있으나, 대부분의 금융 제휴 상품들은 개별 약관에 따라 카드사 고유의 첫 결제 프로모션과 보험사의 다이렉트 결제 청구할인을 분리하여 적용합니다. 가령 간편결제 시스템을 통한 결제 시에는 해당 페이 업체의 포인트 혜택으로 대체되어 적용되는 경우가 있으니 사전에 결제창에서 표기되는 실금액 변동 내역과 비교해 보시는 요령이 필요합니다.</dd>
+
+        <dt tabindex="0" aria-expanded="false">Q. 다이렉트 자동차보험 저렴한곳을 비교하기 위해 여러 카드사의 상담 및 견적 조회를 여러 번 거쳐도 신용도에 무리가 없나요?</dt>
+        <dd>A. 네, 안심하셔도 좋습니다. 최근 신용 점수 조회 제도는 조회 횟수 자체만으로 점수에 부정적인 영향을 미치지 않도록 법적으로 고안되어 있습니다. 모의 계산기 어플, 다이렉트 보험 가격 계산 전용 어플이나 AI 기반의 분석 엔진을 통한 단순 계산 과정은 신용 정보에 하등의 감점 요소가 되지 않으므로, 내 주차 패턴 및 소비 성향에 맞는 최저가 혜택 조합을 꼼꼼하게 찾아보실 것을 적극 추천합니다.</dd>
+
+        <dt tabindex="0" aria-expanded="false">Q. 전월실적 충족 여부에 따라 자동차보험 카드 혜택의 단점이 크게 느껴진다면, 무실적 카드는 없는지요?</dt>
+        <dd>A. 무실적 기반의 신용카드는 매월 결제실적을 맞출 필요가 없어 매우 편리하지만, 대신 건당 캐시백 비율이나 할인 적용 요율 자체가 고실적 요금제 대비 상대적으로 낮게 설정되는 경향이 있습니다. 만일 매달 생활비 지출용 카드로 메인 카드를 쓰고 계시다면 전월실적 30만 원에서 50만 원 수준의 장단점이 조화된 특화 제휴 브랜드를 이용해 할인을 최대로 끌어당기는 방법이 실리 면에서 훨씬 강력할 수 있습니다.</dd>
+
+        <dt tabindex="0" aria-expanded="false">Q. 챗지피티나 제미나이 등 고도화된 AI를 활용한 카드 혜택 검색이 실용적인가요?</dt>
+        <dd>A. 매우 유용합니다. 인공지능 기반 LLM 어플리케이션은 방대한 온라인 웹 상의 약관 데이터를 초단위로 추출하여 최적의 가성비 조합을 추천해 줍니다. 다만 AI 모델이 수집한 시점의 프로모션 유효 기간이 현재 날짜 기준으로 종료되었거나 조건이 다소 개정되었을 수 있으므로 AI가 제시한 일차적 견적 순위 가이드를 바탕으로 제휴사 공식 고객센터를 통한 2차 검증을 병행하는 것이 가장 완벽한 혜택 수령 방법입니다.</dd>
+      </dl>
+    </section>
+
+    <section id="links">
+      <h2>공인 신뢰성 기반 자동차 및 금융 정보 공식 리소스 안내</h2>
+      <p>유익한 의사결정과 정확한 제도 파악을 위해 참고하실 수 있는 금융당국 및 공신력 높은 외부 웹사이트를 제공합니다. 아래 경로를 통해 카드 혜택을 이용한 보험료 절약과 합법적인 차량 등록 등에 대한 공식적 해석을 확인해 보실 수 있습니다.</p>
+      <ul class="link-list">
+        <li><a href="https://directwsearchs.reliabledone.com" target="_blank" rel="noopener noreferrer">릴라이어블던 금융 카드 가이드 - 카드 결제 및 프로모션 혜택 안내 공식 포털</a></li>
+        <li><a href="https://namu.wiki/w/%EC%8B%A0%EC%9A%A9%EC%B9%B4%EB%93%9C" target="_blank" rel="noopener noreferrer">나무위키 - 신용카드 혜택 원리 및 전월 실적 이해와 정보 가이드</a></li>
+        <li><a href="https://www.fss.or.kr" target="_blank" rel="noopener noreferrer">금융감독원 공식 통합 사이트 - 금융제도 및 신용카드 혜택 오용에 따른 소비자보호 가이드라인</a></li>
+      </ul>
+    </section>
+
+    <section id="consulting">
+      <h2>나의 연간 차량 운영비 및 자동차보험료 최적화 1:1 맞춤 컨설팅</h2>
+      <p>현재 운행 중이신 차량 종류와 본인의 연령, 예상 주유 규모를 고려하여 나에게 단 1원이라도 더 큰 실질 할인 사은품과 혜택을 건네줄 최적의 금융 설루션을 안내해 드립니다. 무료 전문 상담 요청 시 어떠한 추가 비용이나 불필요한 결제 유도 없이, AI가 데이터 마이닝을 통해 필터링한 상위 순위 카드사들의 실시간 지원금 정보를 전달드립니다.</p>
+
+      <div class="form-container">
+        <h3>개인화 맞춤 혜택 상담 신청서</h3>
+        <form action="#" method="post" onsubmit="event.preventDefault(); alert('상담 신청이 투명하게 접수되었습니다. AI 엔진 분석 후 영업일 기준 빠른 시간 안에 안내드리겠습니다.');">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="user-name">신청자 성함</label>
+              <input type="text" id="user-name" placeholder="성함을 입력하세요" required>
+            </div>
+            <div class="form-field">
+              <label for="user-phone">연락처</label>
+              <input type="tel" id="user-phone" placeholder="예: 010-1234-5678" required>
+            </div>
+            <div class="form-field">
+              <label for="car-brand">현재 보유 차량 브랜드 및 모델</label>
+              <input type="text" id="car-brand" placeholder="예: 아반떼 하이브리드, 그랜저 1인신조 등" required>
+            </div>
+            <div class="form-field">
+              <label for="monthly-gas">월평균 예상 주유/충전 금액</label>
+              <select id="monthly-gas">
+                <option value="10">10만 원 이하</option>
+                <option value="20">10만 원 ~ 20만 원</option>
+                <option value="30">20만 원 ~ 30만 원</option>
+                <option value="99">30만 원 초과 장거리운전자</option>
+              </select>
+            </div>
+            <div class="form-checkbox">
+              <input type="checkbox" id="privacy-agree" required>
+              <label for="privacy-agree">맞춤식 제휴 카드 혜택 상담 서비스 제공을 위한 개인정보 처리방침에 동의하며, 혜택 매칭 결과를 카카오톡이나 문자 메시지로 수령하는 데 동의합니다.</label>
+            </div>
+          </div>
+          <button type="submit" class="submit-btn">무료 맞춤 금융 컨설팅 신청하기</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // FAQ Accordion logic
+    document.querySelectorAll('dl dt').forEach((dt) => {
+      dt.addEventListener('click', () => {
+        const expanded = dt.getAttribute('aria-expanded') === 'true' || false;
+        dt.setAttribute('aria-expanded', !expanded);
+        dt.classList.toggle('active');
+      });
+      dt.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          dt.click();
+        }
+      });
+    });
+
+    // Tab switcher logic
+    function switchTab(evt, tabId) {
+      const tabContents = document.getElementsByClassName('tab-content');
+      for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove('active');
+      }
+
+      const tabButtons = document.getElementsByClassName('tab-btn');
+      for (let i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove('active');
+      }
+
+      document.getElementById(tabId).classList.add('active');
+      evt.currentTarget.classList.add('active');
+    }
+
+    // Dynamic Saving Calculator
+    function calculateBenefits() {
+      const age = document.getElementById('calc-age').value;
+      const premiumInput = parseFloat(document.getElementById('calc-premium').value) || 0;
+      const pattern = document.getElementById('calc-pattern').value;
+      const resultBox = document.getElementById('calcResult');
+
+      if (premiumInput <= 0) {
+        alert('보험료를 정확하게 입력해 주세요.');
+        return;
+      }
+
+      let savePercent = 0;
+      let recommendBrand = '';
+      let additionalGift = '';
+
+      if (pattern === 'billing') {
+        savePercent = 5;
+        recommendBrand = '국민카드 혹은 삼성카드 다이렉트 제휴 신용 상품';
+        additionalGift = '모바일 주유 상품권 3만 원권 증정';
+      } else if (pattern === 'points') {
+        savePercent = 4.5;
+        recommendBrand = '신한카드 마이카 간편결제 적립 패키지';
+        additionalGift = '네이버 및 카카오페이 포인트 3만 원 즉시 세이브';
+      } else {
+        savePercent = 6;
+        recommendBrand = '현대카드 M 시리즈 자동차 케어 전용 할인 브랜드';
+        additionalGift = '차량 정비 에센셜 키트 및 스피드메이트 무료 오일교환 엔진 점검권';
+      }
+
+      if (age === '20') {
+        savePercent += 0.5; // 사회초년생 우대
+      }
+
+      const totalSaved = Math.round((premiumInput * 10000) * (savePercent / 100));
+      
+      resultBox.innerHTML = `
+        <h4 style="margin-top: 0; color: #0f172a;">AI 매칭 결과 요약</h4>
+        <p style="margin-bottom: 0.5rem;">고객님의 연령대와 가입 예상 비용을 토대로 분석한 결과, 가장 매칭률이 높은 카드는 <strong>[${recommendBrand}]</strong> 입니다.</p>
+        <p style="margin-bottom: 0.5rem;">결제 시 청구 및 제휴 할인을 통한 실질 예상 세이브 비율은 약 <strong>${savePercent}%</strong> 이며, 대략 <strong>${totalSaved.toLocaleString()} 원</strong>의 다이렉트 요금 혜택이 예측됩니다.</p>
+        <p style="margin-bottom: 0.5rem;">신규 가입 시 특별 사은품 혜택: <strong>${additionalGift}</strong></p>
+        <p style="font-size: 0.85rem; color: #64748b; margin-top: 1rem;">본 연산은 고정식 모델 데이터를 참고한 평균적 추정금액이며, 신용 조건별 실제 수령액의 장단점은 전문 고객센터 확인이 수반되어야 합니다.</p>
+      `;
+      resultBox.style.display = 'block';
+    }
+  </script>
+
+  
